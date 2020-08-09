@@ -1,6 +1,8 @@
 import json 
 import requests
 
+from parse_response import parse_response
+
 # Load the config file
 with open("config.json") as f:
     data = json.load(f)
@@ -16,15 +18,17 @@ url = "http://api.openweathermap.org/data/2.5/weather?appid={}&q={}".format(api_
 
 # Make request, parse result
 response = requests.get(url).json()
-  
+
 # 404 === location not found
 if response["cod"] != "404": 
 
     # Parse response
-    for key in response:
-        print(key, response[key])
+    # for key in response:
+    #    print(key, response[key])
 
+    parsed = parse_response(response)
 
+    print(parsed)
     # data = response["main"]
 
     # for key in data:
