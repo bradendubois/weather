@@ -2,6 +2,7 @@ import json
 import requests
 
 from parse_response import parse_response
+from print_response import print_response
 
 # Load the config file
 with open("config.json") as f:
@@ -22,17 +23,9 @@ response = requests.get(url).json()
 # 404 === location not found
 if response["cod"] != "404": 
 
-    # Parse response
-    # for key in response:
-    #    print(key, response[key])
-
+    # Parse response and output it
     parsed = parse_response(response)
-
-    print(parsed)
-    # data = response["main"]
-
-    # for key in data:
-    #     print(key, data[key])
+    print_response(parsed)
 
 else:
-    print(" City Not Found ")
+    print("Could not find city. Adjust your configuration settings.")

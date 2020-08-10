@@ -14,7 +14,8 @@ def parse_response(api_response: dict):
         "wind_speed": wind_speed_conversion(wind["speed"]),
         "gusts": wind_speed_conversion(wind["gust"]),
         "direction": wind_direction_conversion(wind["deg"]),
-        "name": api_response["name"]
+        "name": api_response["name"],
+        "description": api_response["weather"][0]["description"]
     }
 
     return response

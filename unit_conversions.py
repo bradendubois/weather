@@ -3,7 +3,11 @@ from json import load
 MARGIN = 22.5
 
 with open("config.json") as f:
-    temperature_unit = load(f)["temperature_unit"].lower()
+    
+    data = load(f)
+    temperature_unit = data["temperature_unit"].lower().strip()
+    wind_unit = data["wind_unit"].lower().strip()
+    wind_symbol = wind_unit
 
 assert temperature_unit in ["kelvin", "celsius", "fahrenheit"]
 
@@ -22,10 +26,7 @@ elif temperature_unit == "celsius":
     temperature_conversion = kelvin_to_celsius
 else:
     temperature_conversion = kelvin_to_fahrenheit
-
-def wind_speed_conversion(speed: float):
-    # TODO - What units does the API provide it in?
-    return speed
+temperature_symbol = temperature_unit[0].upper()
 
 def wind_direction_conversion(degrees: int):
 
@@ -42,3 +43,30 @@ def wind_direction_conversion(degrees: int):
         msg += "W"
     
     return msg
+
+
+
+def wind_speed_conversion(speed: float):
+
+    unit, time = [i.lower().strip() for i in wind_unit.split("/")]
+    
+    assert unit in ["m", "f", "miles", "km"]
+    assert time in ["second", "minute", "h"]
+
+    if time == "second":
+        time_conversion = 1
+    elif time == "minute":
+        time_conversion = 60
+    elif time == "h":
+        time_conversion = 3600
+
+    if unit == "m":
+        distance_conversion = 1
+    elif unit == "f":
+        distance_conversion = 3.281
+    elif unit == "miles":
+        distance_conversion = 1 / 1609
+    elif unit == "km":
+        distance_conversion = 1 / 1000
+    
+    return speed * time_conversion * distance_conversion
