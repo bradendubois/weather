@@ -3,11 +3,9 @@
   <h1 margin="auto">weather</h1>
 </div>
 
-<br />
-
-<hr />
-
 A quick weather-check using the [OpenWeatherMap API](https://openweathermap.org/).
+
+<br />
 
 ## Requirements
 
