@@ -2,14 +2,16 @@ from json import load
 
 MARGIN = 22.5
 
-with open("config.json") as f:
+with open("configuration.json") as f:
     
     data = load(f)
     temperature_unit = data["temperature_unit"].lower().strip()
     wind_unit = data["wind_unit"].lower().strip()
     wind_symbol = wind_unit
 
-assert temperature_unit in ["kelvin", "celsius", "fahrenheit"]
+if temperature_unit not in ["kelvin", "celsius", "fahrenheit"]:
+    print("Temperature units not configured.")
+    exit(-1)
 
 def kelvin_to_kelvin(temperature: float):
     return temperature
@@ -50,8 +52,13 @@ def wind_speed_conversion(speed: float):
 
     unit, time = [i.lower().strip() for i in wind_unit.split("/")]
     
-    assert unit in ["m", "f", "miles", "km"]
-    assert time in ["second", "minute", "h"]
+    if unit not in ["m", "f", "miles", "km"]:
+        print("Distance units not configured correctly.")
+        exit(-1)
+        
+    if time not in ["second", "minute", "h"]:
+        print("Time units not configured correctly.")
+        exit(-1)
 
     if time == "second":
         time_conversion = 1

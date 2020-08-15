@@ -7,7 +7,7 @@ from util.parse_response import parse_response
 from util.print_response import print_response
 
 # Load the config file
-with open("config.json") as f:
+with open("configuration.json") as f:
     data = json.load(f)
 
 # API Key / City for query
