@@ -1,6 +1,6 @@
 {
     "api_key": "API_KEY_HERE",
     "city": "CITY_HERE",
-    "temperature_unit": "celsius|fahrenheit",
+    "temperature_unit": "celsius|fahrenheit|kelvin",
     "wind_unit": "m|f|km|miles|km / second|minute|h"  
 }
