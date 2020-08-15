@@ -1,6 +1,6 @@
 {
-    "api_key": "40a3f210d993e64ab1d720f72cdce5f7",
-    "city": "Saskatoon",
+    "api_key": "API_KEY_HERE",
+    "city": "CITY_HERE",
     "temperature_unit": "celsius",
-    "wind_unit": "km/h"  
+    "wind_unit": "km/h"
 }

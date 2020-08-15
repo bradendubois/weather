@@ -1,18 +1,21 @@
 import json 
 import requests
 
-from parse_response import parse_response
-from print_response import print_response
+from util.parse_response import parse_response
+from util.print_response import print_response
 
 # Load the config file
 with open("config.json") as f:
     data = json.load(f)
 
-# API Key 
+# API Key / City for query
 api_key = data["api_key"]
-
-# City
 city = data["city"]
+
+# Settings haven't been configured
+if api_key == "API_KEY_HERE" or city == "CITY_HERE":
+    print("Config file not fully set up.")
+    exit(-1)
 
 # URL to query the openweathermap API
 url = "http://api.openweathermap.org/data/2.5/weather?appid={}&q={}".format(api_key, city)

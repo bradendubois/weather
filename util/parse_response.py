@@ -1,4 +1,4 @@
-from unit_conversions import temperature_conversion, wind_direction_conversion, wind_speed_conversion
+from util.unit_conversions import temperature_conversion, wind_direction_conversion, wind_speed_conversion
 
 def parse_response(api_response: dict):
 

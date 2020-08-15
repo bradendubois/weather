@@ -1,4 +1,4 @@
-from unit_conversions import temperature_symbol, wind_symbol
+from util.unit_conversions import temperature_symbol, wind_symbol
 
 TOP_PADDING = 1
 LEFT_PADDING = 3
