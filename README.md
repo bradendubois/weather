@@ -53,6 +53,21 @@ Or in Python:
 python weather.py
 ```
 
+A summary of the weather will be printed.
+
+#### Example
+
+```
+> python weather.py
+
+    Currently, in Saskatoon:
+    Few clouds
+    Temperature: 13.9°C (feels like: 10.9°C)
+    High: 15°C, Low: 13°C
+    Wind (SW) speeds of 11.2km/h
+    Humidity: 62%
+```
+
 ## Acknowledgements
 
 - The sun icon used in this README is provided by [Max Pixel](https://www.maxpixel.net/Icon-Climate-Sky-Summer-Sun-Sunny-Weather-2947294), licensed by [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en). 
