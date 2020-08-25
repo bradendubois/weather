@@ -1,6 +1,6 @@
-from util.unit_conversions import temperature_conversion, wind_direction_conversion, wind_speed_conversion
+from util.unit_conversions import *
 
-def parse_response(api_response: dict):
+def parse_response(api_response: dict, temperature_conversion, time, unit):
 
     main = api_response["main"]
     wind = api_response["wind"]
@@ -11,13 +11,13 @@ def parse_response(api_response: dict):
         "minimum": temperature_conversion(main["temp_min"]),
         "maximum": temperature_conversion(main["temp_max"]),
         "humidity": main["humidity"],
-        "wind_speed": wind_speed_conversion(wind["speed"]),
+        "wind_speed": wind_speed_conversion(wind["speed"], time, unit),
         "direction": wind_direction_conversion(wind["deg"]),
         "name": api_response["name"],
         "description": api_response["weather"][0]["description"]
     }
 
     if "gust" in wind: 
-        response["gusts"] = wind_speed_conversion(wind["gust"])
+        response["gusts"] = wind_speed_conversion(wind["gust"], time, unit)
 
     return response

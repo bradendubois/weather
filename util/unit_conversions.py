@@ -2,17 +2,6 @@ from json import load
 
 MARGIN = 22.5
 
-with open("configuration.json") as f:
-    
-    data = load(f)
-    temperature_unit = data["temperature_unit"].lower().strip()
-    wind_unit = data["wind_unit"].lower().strip()
-    wind_symbol = wind_unit
-
-if temperature_unit not in ["kelvin", "celsius", "fahrenheit"]:
-    print("Temperature units not configured.")
-    exit(-1)
-
 def kelvin_to_kelvin(temperature: float):
     return temperature
 
@@ -21,14 +10,6 @@ def kelvin_to_celsius(temperature: float):
 
 def kelvin_to_fahrenheit(temperature: float):
     return temperature * 9 / 5 - 459.67
-
-if temperature_unit == "kelvin":
-    temperature_conversion = kelvin_to_kelvin
-elif temperature_unit == "celsius":
-    temperature_conversion = kelvin_to_celsius
-else:
-    temperature_conversion = kelvin_to_fahrenheit
-temperature_symbol = temperature_unit[0].upper()
 
 def wind_direction_conversion(degrees: int):
 
@@ -46,19 +27,7 @@ def wind_direction_conversion(degrees: int):
     
     return msg
 
-
-
-def wind_speed_conversion(speed: float):
-
-    unit, time = [i.lower().strip() for i in wind_unit.split("/")]
-    
-    if unit not in ["m", "f", "miles", "km"]:
-        print("Distance units not configured correctly.")
-        exit(-1)
-        
-    if time not in ["second", "minute", "h"]:
-        print("Time units not configured correctly.")
-        exit(-1)
+def wind_speed_conversion(speed: float, time, unit):
 
     if time == "second":
         time_conversion = 1

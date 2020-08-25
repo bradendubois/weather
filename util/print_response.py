@@ -1,10 +1,8 @@
-from util.unit_conversions import temperature_symbol, wind_symbol
-
 TOP_PADDING = 1
 LEFT_PADDING = 3
 BOTTOM_PADDING = 0
 
-def print_response(parsed_response: dict):
+def print_response(parsed_response: dict, temperature_symbol, wind_symbol):
 
     gust = ", gusts of {:.1f}{}".format(parsed_response["gusts"], wind_symbol) if "gusts" in parsed_response else ""
 
